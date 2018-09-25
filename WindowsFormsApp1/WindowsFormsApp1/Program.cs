@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -135,149 +136,12 @@ namespace WindowsFormsApp1
         ******************************************************/
        public static void EnrollStudent()
        {
-           string studentLookup, courseLookup;
-           bool courseFound = false,
-               studentFound = false;
-
-           Course courseMatch = new Course();
-           Student studentMatch = new Student();
-
-           // Prompt and get user input zid
-           PrintStudentList();
-           Console.WriteLine();
-           Console.WriteLine("Please enter the Z-ID (omitting the Z character)");
-           Console.Write("of the student to enroll in the course: ");
-           studentLookup = Console.ReadLine();
-
-           PrintCourseList();
-           Console.WriteLine();
-           Console.WriteLine("Which course will this student be enrolled into?");
-           Console.Write("<DEPT COURSE_NUM-SECTION_NUM>  ");
-           courseLookup = Console.ReadLine();
-           courseLookup = courseLookup.ToUpper();
-
-           // Parse the student id from user input
-           uint targetZid;
-           UInt32.TryParse(studentLookup, out targetZid);
-
-           // Loop and try to match input with a student
-           foreach (Student s in studentPool)
-           {
-               if (s.Zid == targetZid)
-               {
-                   studentMatch = s;
-                   studentFound = true;
-               }
-           }
-
-           // Split the course input string by space or -
-           char[] delims = { ' ', '-' };
-           string[] courseArgs = courseLookup.Split(delims);
-           string targetCourseNum = courseArgs[1],
-               targetSection = courseArgs[2];
-
-           // Parse course number into a uint
-           uint parsedCourseNum;
-           UInt32.TryParse(targetCourseNum, out parsedCourseNum);
-
-           // Loop and try to match input with a course
-           foreach (Course c in coursePool)
-           {
-               if (c.CourseNum == parsedCourseNum && c.SectionNum.Equals(targetSection))
-               {
-                   courseMatch = c;
-                   courseFound = true;
-               }
-           }
-
-           // Check if student or course was found and notify user, otherwise enroll student
-
-           if (studentFound == false)
-           {
-               Console.WriteLine("Invalid zid, please enter a valid Student ID.");
-           }
-           else if (courseFound == false)
-           {
-               Console.WriteLine("Invalid Course, please enter a valid Course.");
-           }
-           else
-           {
-               studentMatch.Enroll(courseMatch);
-           }
-
+            Console.WriteLine("EnrollStudent called.");
        } // end Program.EnrollStudent method
 
        public static void DropStudent()
        {
-           string studentLookup, courseLookup;
-           bool courseFound = false,
-               studentFound = false;
-
-           Course courseMatch = new Course();
-           Student studentMatch = new Student();
-
-           // Prompt and get user input zid
-           PrintStudentList();
-           Console.WriteLine();
-           Console.WriteLine("Please enter the Z-ID (omitting the Z character)");
-           Console.Write("of the student to drop from the course: ");
-           studentLookup = Console.ReadLine();
-
-           PrintCourseList();
-           Console.WriteLine();
-           Console.WriteLine("Which course will this student be dropped from?");
-           Console.Write("<DEPT COURSE_NUM-SECTION_NUM>  ");
-           courseLookup = Console.ReadLine();
-           courseLookup = courseLookup.ToUpper();
-
-           // Parse the student id from user input
-           uint targetZid;
-           UInt32.TryParse(studentLookup, out targetZid);
-
-           // Loop and try to match input with a student
-           foreach (Student s in studentPool)
-           {
-               if (s.Zid == targetZid)
-               {
-                   studentMatch = s;
-                   studentFound = true;
-               }
-           }
-
-           // Split the course input string by space or -
-           char[] delims = { ' ', '-' };
-           string[] courseArgs = courseLookup.Split(delims);
-           string targetCourseNum = courseArgs[1],
-               targetSection = courseArgs[2];
-
-           // Parse course number into a uint
-           uint parsedCourseNum;
-           UInt32.TryParse(targetCourseNum, out parsedCourseNum);
-
-           // Loop and try to match input with a course
-           foreach (Course c in coursePool)
-           {
-               if (c.CourseNum == parsedCourseNum && c.SectionNum.Equals(targetSection))
-               {
-                   courseMatch = c;
-                   courseFound = true;
-               }
-           }
-
-           // Check if student or course was found and notify user, otherwise enroll student
-
-           if (studentFound == false)
-           {
-               Console.WriteLine("Invalid zid, please enter a valid Student ID.");
-           }
-           else if (courseFound == false)
-           {
-               Console.WriteLine("Invalid Course, please enter a valid Course.");
-           }
-           else
-           {
-               studentMatch.Drop(courseMatch);
-           }
+            Console.WriteLine("DropStudent Called");
        } // end Program.DropStudent method
 
 
@@ -291,49 +155,7 @@ namespace WindowsFormsApp1
          ******************************************************/
         public static void PrintRosterForCourse()
         {
-            PrintCourseList();
-            Console.WriteLine();
-
-            // Get input from the user
-            Console.Write("Please enter Department: ");
-            string deptChoice;
-            deptChoice = Console.ReadLine();
-            deptChoice = deptChoice.ToUpper();
-            // Print a space
-            Console.WriteLine();
-
-            // Get input from the user
-            Console.Write("Please enter Course ID: ");
-            string courseChoice;
-            courseChoice = Console.ReadLine();
-            // Print a space
-            Console.WriteLine();
-
-            // Get input from the user
-            Console.Write("Please enter Section ID: ");
-            string sectChoice;
-            sectChoice = Console.ReadLine();
-            sectChoice = sectChoice.ToUpper();
-            // Print a space
-            Console.WriteLine();
-
-            bool printError = false;
-            foreach (Course c in coursePool)
-            {
-                if (c.DeptCode.Equals(deptChoice) && c.SectionNum.Equals(sectChoice))
-                {
-                    c.PrintRoster(studentPool);
-                    printError = true;
-                }
-
-            }
-
-            if (printError == false)
-            {
-                Console.WriteLine("No matches found.");
-            }
-
-            Console.WriteLine();
+            Console.WriteLine("PrintRosterForCourse called");
         } // end Program.PrintRosterForCourse method
     } // end Program class
 } // end namespace
