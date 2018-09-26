@@ -81,12 +81,12 @@ namespace WindowsFormsApp1
         * Return Type: void
         * Use Case: Builds the static coursePool variable
         ******************************************************/
-        private static void BuildCoursePool()
+        public static void BuildCoursePool()
         {
             Console.WriteLine("\nBuilding Course Pool");
 
             String buffer,
-                filepath = "..\\..\\..\\courses.txt"; // Windows path
+                filepath = "..\\..\\courses.txt"; // Windows path
                                                       //filepath = "./courses.txt"; // Mac Path
 
             // Open courses.txt file
