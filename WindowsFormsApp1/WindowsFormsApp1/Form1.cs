@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
             Program.BuildStudentPool();
             foreach (Student s in Program.studentPool)
             {
-                string nextStudent = s.LastName + ", " + s.FirstName;
+                string nextStudent = "z" + s.Zid + " -- " + s.LastName + ", " + s.FirstName;
                 studentBox.Items.Add(nextStudent);
             }
         }
