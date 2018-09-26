@@ -1,4 +1,7 @@
-﻿namespace WindowsFormsApp1
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
 {
     partial class Form1
     {
@@ -42,8 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.MainOutputBox = new System.Windows.Forms.RichTextBox();
-            this.courseBox = new System.Windows.Forms.ListBox();
-            this.studentBox = new System.Windows.Forms.ListBox();
+            this.CourseBox = new System.Windows.Forms.ListBox();
+            this.StudentBox = new System.Windows.Forms.ListBox();
             this.MajorBox = new System.Windows.Forms.ComboBox();
             this.YearComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,7 +73,7 @@
             this.PrintRosterButton.TabIndex = 0;
             this.PrintRosterButton.Text = "Print Course Roster";
             this.PrintRosterButton.UseVisualStyleBackColor = true;
-            this.PrintRosterButton.Click += new System.EventHandler(this.button1_Click);
+            this.PrintRosterButton.Click += new System.EventHandler(this.PrintRosterButton_Click);
             // 
             // SearchButton
             // 
@@ -195,27 +198,27 @@
             this.MainOutputBox.TabIndex = 13;
             this.MainOutputBox.Text = "";
             // 
-            // courseBox
+            // CourseBox
             // 
-            this.courseBox.FormattingEnabled = true;
-            this.courseBox.ItemHeight = 29;
-            this.courseBox.Location = new System.Drawing.Point(1337, 129);
-            this.courseBox.Margin = new System.Windows.Forms.Padding(7);
-            this.courseBox.Name = "courseBox";
-            this.courseBox.Size = new System.Drawing.Size(447, 816);
-            this.courseBox.TabIndex = 16;
-            this.courseBox.SelectedIndexChanged += new System.EventHandler(this.courseBox_SelectedIndexChanged);
+            this.CourseBox.FormattingEnabled = true;
+            this.CourseBox.ItemHeight = 29;
+            this.CourseBox.Location = new System.Drawing.Point(1337, 129);
+            this.CourseBox.Margin = new System.Windows.Forms.Padding(7);
+            this.CourseBox.Name = "CourseBox";
+            this.CourseBox.Size = new System.Drawing.Size(447, 816);
+            this.CourseBox.TabIndex = 16;
+            this.CourseBox.SelectedIndexChanged += new System.EventHandler(this.CourseBox_SelectedIndexChanged);
             // 
-            // studentBox
+            // StudentBox
             // 
-            this.studentBox.FormattingEnabled = true;
-            this.studentBox.ItemHeight = 29;
-            this.studentBox.Location = new System.Drawing.Point(789, 129);
-            this.studentBox.Margin = new System.Windows.Forms.Padding(7);
-            this.studentBox.Name = "studentBox";
-            this.studentBox.Size = new System.Drawing.Size(447, 816);
-            this.studentBox.TabIndex = 17;
-            this.studentBox.SelectedIndexChanged += new System.EventHandler(this.studentBox_SelectedIndexChanged);
+            this.StudentBox.FormattingEnabled = true;
+            this.StudentBox.ItemHeight = 29;
+            this.StudentBox.Location = new System.Drawing.Point(789, 129);
+            this.StudentBox.Margin = new System.Windows.Forms.Padding(7);
+            this.StudentBox.Name = "StudentBox";
+            this.StudentBox.Size = new System.Drawing.Size(447, 816);
+            this.StudentBox.TabIndex = 17;
+            this.StudentBox.SelectedIndexChanged += new System.EventHandler(this.StudentBox_SelectedIndexChanged);
             // 
             // MajorBox
             // 
@@ -367,8 +370,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.YearComboBox);
             this.Controls.Add(this.MajorBox);
-            this.Controls.Add(this.studentBox);
-            this.Controls.Add(this.courseBox);
+            this.Controls.Add(this.StudentBox);
+            this.Controls.Add(this.CourseBox);
             this.Controls.Add(this.MainOutputBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -390,6 +393,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
+            int w = Screen.PrimaryScreen.WorkingArea.Width / 2;
+            this.Size = new Size(w, h);
+
+            this.CenterToScreen();
         }
 
         #endregion
@@ -408,8 +416,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox MainOutputBox;
-        private System.Windows.Forms.ListBox courseBox;
-        private System.Windows.Forms.ListBox studentBox;
+        private System.Windows.Forms.ListBox CourseBox;
+        private System.Windows.Forms.ListBox StudentBox;
         private System.Windows.Forms.ComboBox MajorBox;
         private System.Windows.Forms.ComboBox YearComboBox;
         private System.Windows.Forms.Label label1;
