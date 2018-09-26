@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             foreach (Student s in Program.studentPool)
             {
                 string nextStudent = "z" + s.Zid + " -- " + s.LastName + ", " + s.FirstName;
-                studentBox.Items.Add(nextStudent);
+                StudentBox.Items.Add(nextStudent);
             }
         }
 
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
                 StringBuilder sb = new StringBuilder(c.DeptCode + " ");
                 sb.Append(c.CourseNum + "-" + c.SectionNum);
                 sb.Append(" (" + c.NumEnrolled + "/" + c.MaxCapacity + ")");
-                courseBox.Items.Add(sb.ToString());
+                CourseBox.Items.Add(sb.ToString());
             }
         }
 
