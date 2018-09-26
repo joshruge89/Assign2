@@ -40,17 +40,19 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PrintRosterButton_Click(object sender, EventArgs e)
         {
-            
+            string[] foo = { "Matched Course Roster Here", "This should display on the next line",
+                            "So we can be sure the list will display properly"};
+            MainOutputBox.Text = String.Join(Environment.NewLine, foo); 
         }
 
-        private void studentBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void courseBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CourseBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

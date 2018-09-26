@@ -1,4 +1,7 @@
-﻿namespace WindowsFormsApp1
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp1
 {
     partial class Form1
     {
@@ -70,7 +73,7 @@
             this.PrintRosterButton.TabIndex = 0;
             this.PrintRosterButton.Text = "Print Course Roster";
             this.PrintRosterButton.UseVisualStyleBackColor = true;
-            this.PrintRosterButton.Click += new System.EventHandler(this.button1_Click);
+            this.PrintRosterButton.Click += new System.EventHandler(this.PrintRosterButton_Click);
             // 
             // SearchButton
             // 
@@ -204,7 +207,7 @@
             this.CourseBox.Name = "CourseBox";
             this.CourseBox.Size = new System.Drawing.Size(447, 816);
             this.CourseBox.TabIndex = 16;
-            this.CourseBox.SelectedIndexChanged += new System.EventHandler(this.courseBox_SelectedIndexChanged);
+            this.CourseBox.SelectedIndexChanged += new System.EventHandler(this.CourseBox_SelectedIndexChanged);
             // 
             // StudentBox
             // 
@@ -215,7 +218,7 @@
             this.StudentBox.Name = "StudentBox";
             this.StudentBox.Size = new System.Drawing.Size(447, 816);
             this.StudentBox.TabIndex = 17;
-            this.StudentBox.SelectedIndexChanged += new System.EventHandler(this.studentBox_SelectedIndexChanged);
+            this.StudentBox.SelectedIndexChanged += new System.EventHandler(this.StudentBox_SelectedIndexChanged);
             // 
             // MajorBox
             // 
@@ -390,6 +393,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+            int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
+            int w = Screen.PrimaryScreen.WorkingArea.Width / 2;
+            this.Size = new Size(w, h);
+
+            this.CenterToScreen();
         }
 
         #endregion
