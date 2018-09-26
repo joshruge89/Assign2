@@ -14,12 +14,32 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            PopulateStudentBox();
+        }
+
+        public void PopulateStudentBox()
+        {
+            Program.BuildStudentPool();
+            foreach (Student s in Program.studentPool)
+            {
+                string nextStudent = s.LastName + ", " + s.FirstName;
+                studentBox.Items.Add(nextStudent);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add("1 ");
-            listBox2.Items.Add("2 "); 
+            
+        }
+
+        private void studentBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void courseBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

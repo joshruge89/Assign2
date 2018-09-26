@@ -8,8 +8,8 @@ namespace WindowsFormsApp1
 {
     static class Program
     {
-        static SortedSet<Student> studentPool;
-        static SortedSet<Course> coursePool;
+        public static SortedSet<Student> studentPool = new SortedSet<Student>();
+        public static SortedSet<Course> coursePool = new SortedSet<Course>();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -29,12 +29,12 @@ namespace WindowsFormsApp1
          * Return Type: void
          * Use Case: Builds the static studentPool variable
          ******************************************************/
-        private static void BuildStudentPool()
+        public static void BuildStudentPool()
         {
             Console.WriteLine("Building Student Pool");
 
             String buffer,
-                filepath = "..\\..\\..\\students.txt"; // Windows Path
+                filepath = "..\\..\\students.txt"; // Windows Path
                                                        //filepath = "./students.txt"; // Mac Path
 
             // Open students.txt file
