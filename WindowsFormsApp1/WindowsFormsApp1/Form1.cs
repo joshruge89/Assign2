@@ -15,15 +15,28 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             PopulateStudentBox();
+            PopulateCourseBox();
         }
 
-        public void PopulateStudentBox()
+        private void PopulateStudentBox()
         {
             Program.BuildStudentPool();
             foreach (Student s in Program.studentPool)
             {
                 string nextStudent = "z" + s.Zid + " -- " + s.LastName + ", " + s.FirstName;
                 studentBox.Items.Add(nextStudent);
+            }
+        }
+
+        private void PopulateCourseBox()
+        {
+            Program.BuildCoursePool();
+            foreach (Course c in Program.coursePool)
+            {
+                StringBuilder sb = new StringBuilder(c.DeptCode + " ");
+                sb.Append(c.CourseNum + "-" + c.SectionNum);
+                sb.Append(" (" + c.NumEnrolled + "/" + c.MaxCapacity + ")");
+                courseBox.Items.Add(sb.ToString());
             }
         }
 
