@@ -150,7 +150,6 @@ namespace SchoolApp
             MainOutputBox.Clear();
             string studentSelection, courseSelection;
             StringBuilder dropOutput = new StringBuilder();
-            StringBuilder selectedMsg = new StringBuilder();
             bool bothSelected = true;
 
             if (StudentBox.SelectedIndex == -1)
@@ -185,7 +184,8 @@ namespace SchoolApp
                 }
                 else
                 {
-                    selectedMsg.Append(FormController.BuildEnrollErrorMsg(conditionCode));
+                    string dropErrorMsg = "Error! Student could not be dropped from class.";
+                    dropOutput.Append(dropErrorMsg);
                 }
 
 

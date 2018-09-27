@@ -186,9 +186,7 @@ namespace SchoolApp
             return "Unkown error occurred";
         }
 
-
-
-
+  
         /*******************************************************
         * FormController.EnrollStudent method
         *
