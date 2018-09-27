@@ -110,5 +110,56 @@ namespace SchoolApp
 
             MainOutputBox.Text = enrollOutput.ToString();
         }
+
+        //Drop Student Function 
+        private void DropStudentButton_Click(object sender, EventArgs e)
+        {
+            MainOutputBox.Clear();
+            string studentSelection, courseSelection;
+            StringBuilder dropOutput = new StringBuilder();
+            StringBuilder selectedMsg = new StringBuilder();
+            bool bothSelected = true;
+
+            if (StudentBox.SelectedIndex == -1)
+            {
+                dropOutput.AppendLine("Error! Please Select a Student");
+                bothSelected = false;
+            }
+
+            if (CourseBox.SelectedIndex == -1)
+            {
+                dropOutput.AppendLine("Error! Please Select a Course");
+                bothSelected = false;
+            }
+
+            if (bothSelected == true)
+            {
+                Student selectedStudent = FormController.MatchStudent(StudentBox.SelectedItem.ToString());
+                Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
+
+                int conditionCode = selectedStudent.Drop(selectedCourse);
+
+                if (conditionCode == 0)
+                {
+                    PopulateCourseBox();
+
+                    dropOutput.Append("Successfully dropped ");
+                    dropOutput.Append(selectedStudent.FirstName + " " + selectedStudent.LastName + " ");
+                    dropOutput.Append("(z" + selectedStudent.Zid + ") from ");
+                    dropOutput.Append(selectedCourse.BuildCourseListing());
+
+                    
+                }
+                else
+                {
+                    selectedMsg.Append(FormController.BuildEnrollErrorMsg(conditionCode));
+                }
+
+
+            }
+
+            MainOutputBox.Text = dropOutput.ToString();
+           
+        }
     }
 }
