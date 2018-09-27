@@ -1,4 +1,16 @@
-﻿using System;
+﻿/************************************************************
+ *                                                          *
+ *  CSCI 473/504           Assignment 2         Fall 2018   *                                             
+ *                                                          *
+ *  Programmers: Tyler Saballus/Josh Ruge                   *
+ *                                                          *
+ *  Date Due:   Sept-27                                     *                          
+ *                                                          *
+ *  Purpose:    Student enrollment using two classes,       *
+ *              Students and Courses to enact basic         *
+ *              functionality to the user via a form..      *
+ ***********************************************************/
+using System;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -46,11 +58,31 @@ namespace SchoolApp
             }
         }
 
+        //Print Roster Button 
         private void PrintRosterButton_Click(object sender, EventArgs e)
         {
-            string[] foo = { "Matched Course Roster Here", "This should display on the next line",
-                            "So we can be sure the list will display properly"};
-            MainOutputBox.Text = String.Join(Environment.NewLine, foo); 
+            MainOutputBox.Clear();
+            StringBuilder pRos = new StringBuilder();
+            bool selected = true;
+
+            if (CourseBox.SelectedIndex == -1)
+            {
+                pRos.AppendLine("Error! Please Select a Course");
+                selected = false;
+            }
+
+            if (selected == true)
+            {
+                Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
+           //     string call = selectedCourse.studentsEnrolled(); 
+                pRos.AppendLine(selectedCourse.ToString()); 
+            }
+
+            /*           string[] foo = { "Matched Course Roster Here", "This should display on the next line",
+                                       "So we can be sure the list will display properly"};
+                       MainOutputBox.Text = String.Join(Environment.NewLine, foo);
+           */
+            MainOutputBox.Text = pRos.ToString();
         }
 
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +95,7 @@ namespace SchoolApp
 
         }
 
+        //Enroll Students
         private void EnrollStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
