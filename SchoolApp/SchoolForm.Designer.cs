@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SchoolApp
 {
-    partial class Form1
+    partial class SchoolForm
     {
         /// <summary>
         /// Required designer variable.
@@ -352,7 +352,7 @@ namespace WindowsFormsApp1
             this.MaxCapacityBox.Size = new System.Drawing.Size(252, 35);
             this.MaxCapacityBox.TabIndex = 32;
             // 
-            // Form1
+            // SchoolForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

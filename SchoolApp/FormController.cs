@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SchoolApp
 {
-    static class Program
+    static class FormController
     {
         public static SortedSet<Student> studentPool = new SortedSet<Student>();
         public static SortedSet<Course> coursePool = new SortedSet<Course>();
@@ -18,12 +17,12 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SchoolForm());
         }
 
 
         /*******************************************************
-         * Program.BuildStudentPool method
+         * FormController.BuildStudentPool method
          *
          * Arguments: None
          * Return Type: void
@@ -75,7 +74,7 @@ namespace WindowsFormsApp1
         } // end BuildStudentPool method
 
         /*******************************************************
-        * Program.BuildCoursePool method
+        * FormController.BuildCoursePool method
         *
         * Arguments: None
         * Return Type: void
@@ -127,7 +126,7 @@ namespace WindowsFormsApp1
         } // end BuildCoursePool method
 
         /*******************************************************
-        * Program.EnrollStudent method
+        * FormController.EnrollStudent method
         *
         * Arguments: None
         * Return Type: void
@@ -137,16 +136,16 @@ namespace WindowsFormsApp1
        public static void EnrollStudent()
        {
             Console.WriteLine("EnrollStudent called.");
-       } // end Program.EnrollStudent method
+       } // end FormController.EnrollStudent method
 
        public static void DropStudent()
        {
             Console.WriteLine("DropStudent Called");
-       } // end Program.DropStudent method
+       } // end FormController.DropStudent method
 
 
         /*******************************************************
-         * Program.PrintRosterForCourse method
+         * FormController.PrintRosterForCourse method
          *
          * Arguments: None
          * Return Type: void
@@ -156,6 +155,6 @@ namespace WindowsFormsApp1
         public static void PrintRosterForCourse()
         {
             Console.WriteLine("PrintRosterForCourse called");
-        } // end Program.PrintRosterForCourse method
-    } // end Program class
+        } // end FormController.PrintRosterForCourse method
+    } // end FormController class
 } // end namespace

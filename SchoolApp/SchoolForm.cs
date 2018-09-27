@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SchoolApp
 {
-    public partial class Form1 : Form
+    public partial class SchoolForm : Form
     {
-        public Form1()
+        public SchoolForm()
         {
             InitializeComponent();
             PositionAndSizeFrame();
@@ -31,8 +26,8 @@ namespace WindowsFormsApp1
 
         private void PopulateStudentBox()
         {
-            Program.BuildStudentPool();
-            foreach (Student s in Program.studentPool)
+            FormController.BuildStudentPool();
+            foreach (Student s in FormController.studentPool)
             {
                 StudentBox.Items.Add(s.BuildStudentListing());
             }
@@ -40,8 +35,8 @@ namespace WindowsFormsApp1
 
         private void PopulateCourseBox()
         {
-            Program.BuildCoursePool();
-            foreach (Course c in Program.coursePool)
+            FormController.BuildCoursePool();
+            foreach (Course c in FormController.coursePool)
             {         
                 CourseBox.Items.Add(c.BuildCourseListing());
             }
