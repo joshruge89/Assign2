@@ -161,4 +161,12 @@ public class Course : IComparable<Course>
         set { maxCapacity = value; }
     }
 
+    public string BuildCourseListing()
+    {
+        StringBuilder sb = new StringBuilder(DeptCode + " ");
+        sb.Append(CourseNum + "-" + SectionNum);
+        sb.Append(" (" + NumEnrolled + "/" + MaxCapacity + ")");
+        return sb.ToString();
+    }
+
 } // end Course class

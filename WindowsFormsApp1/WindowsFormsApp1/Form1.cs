@@ -34,8 +34,7 @@ namespace WindowsFormsApp1
             Program.BuildStudentPool();
             foreach (Student s in Program.studentPool)
             {
-                string nextStudent = "z" + s.Zid + " -- " + s.LastName + ", " + s.FirstName;
-                StudentBox.Items.Add(nextStudent);
+                StudentBox.Items.Add(s.BuildStudentListing());
             }
         }
 
@@ -43,11 +42,8 @@ namespace WindowsFormsApp1
         {
             Program.BuildCoursePool();
             foreach (Course c in Program.coursePool)
-            {
-                StringBuilder sb = new StringBuilder(c.DeptCode + " ");
-                sb.Append(c.CourseNum + "-" + c.SectionNum);
-                sb.Append(" (" + c.NumEnrolled + "/" + c.MaxCapacity + ")");
-                CourseBox.Items.Add(sb.ToString());
+            {         
+                CourseBox.Items.Add(c.BuildCourseListing());
             }
         }
 
@@ -64,6 +60,11 @@ namespace WindowsFormsApp1
         }
 
         private void CourseBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnrollStudentButton_Click(object sender, EventArgs e)
         {
 
         }

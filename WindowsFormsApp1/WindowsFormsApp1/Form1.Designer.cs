@@ -105,6 +105,7 @@ namespace WindowsFormsApp1
             this.EnrollStudentButton.TabIndex = 3;
             this.EnrollStudentButton.Text = "Enroll Student";
             this.EnrollStudentButton.UseVisualStyleBackColor = true;
+            this.EnrollStudentButton.Click += new System.EventHandler(this.EnrollStudentButton_Click);
             // 
             // NiuBanner
             // 
@@ -392,6 +393,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.MaxCapacityBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

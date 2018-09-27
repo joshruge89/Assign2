@@ -237,5 +237,11 @@ public class Student : IComparable<Student>
         return sb.ToString();
     }
 
+    public string BuildStudentListing()
+    {
+        string studentListing = "z" + Zid + " -- " + LastName + ", " + FirstName;
+        return studentListing;
+    }
+
 
 } // end Student class
