@@ -14,8 +14,19 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            PositionAndSizeFrame();
+
             PopulateStudentBox();
             PopulateCourseBox();
+        }
+
+        private void PositionAndSizeFrame()
+        {
+            int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
+            int w = Screen.PrimaryScreen.WorkingArea.Width / 2;
+            Size = new Size(w, h);
+
+            CenterToScreen();
         }
 
         private void PopulateStudentBox()

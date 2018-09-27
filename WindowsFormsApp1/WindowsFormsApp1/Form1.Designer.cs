@@ -392,12 +392,6 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.MaxCapacityBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-            int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
-            int w = Screen.PrimaryScreen.WorkingArea.Width / 2;
-            this.Size = new Size(w, h);
-
-            this.CenterToScreen();
         }
 
         #endregion
