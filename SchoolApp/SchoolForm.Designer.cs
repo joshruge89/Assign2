@@ -258,6 +258,7 @@ namespace SchoolApp
             this.AddCourseButton.TabIndex = 22;
             this.AddCourseButton.Text = "Add Course";
             this.AddCourseButton.UseVisualStyleBackColor = true;
+            this.AddCourseButton.Click += new System.EventHandler(this.AddCourseButton_Click);
             // 
             // label7
             // 
@@ -316,6 +317,7 @@ namespace SchoolApp
             this.AddStudentButton.TabIndex = 29;
             this.AddStudentButton.Text = "Add Student";
             this.AddStudentButton.UseVisualStyleBackColor = true;
+            this.AddStudentButton.Click += new System.EventHandler(this.AddStudentButton_Click);
             // 
             // label10
             // 
@@ -337,7 +339,7 @@ namespace SchoolApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 395);
+            this.ClientSize = new System.Drawing.Size(687, 468);
             this.Controls.Add(this.MaxCapacityBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.AddStudentButton);

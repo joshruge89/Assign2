@@ -97,8 +97,7 @@ namespace SchoolApp
         }
 
         // Student Constructor - 6 Arguments
-        public Student(uint newZid, string newFName, string newLName, string newMajor, int newYear,
-                       double newGpa)
+        public Student(uint newZid, string newFName, string newLName, string newMajor, int newYear, float newGPA)
         {
             // Set the zid in the constructor because it is readonly
             if (newZid < 1000000)
@@ -118,7 +117,7 @@ namespace SchoolApp
             LastName = newLName;
             Year = (academicYears)newYear;
             Major = newMajor;
-            Gpa = newGpa;
+            Gpa = newGPA;
             Hours = 0;
         }
 

@@ -194,5 +194,27 @@ namespace SchoolApp
             MainOutputBox.Text = dropOutput.ToString();
            
         }
+
+        //Add Student 
+        private void AddStudentButton_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            Student newStudent = new Student();
+            FormModel.studentPool.Add(newStudent);
+            PopulateStudentBox();
+            MainOutputBox.Text = "Added Student";
+        }
+
+        private void AddCourseButton_Click(object sender, EventArgs e)
+        {
+            Course newCourse = new Course();
+            FormModel.coursePool.Add(newCourse);
+            PopulateCourseBox();
+            MainOutputBox.Text = "Added Course";
+
+        }
     }
 }
