@@ -105,6 +105,7 @@ namespace WindowsFormsApp1
             this.EnrollStudentButton.TabIndex = 3;
             this.EnrollStudentButton.Text = "Enroll Student";
             this.EnrollStudentButton.UseVisualStyleBackColor = true;
+            this.EnrollStudentButton.Click += new System.EventHandler(this.EnrollStudentButton_Click);
             // 
             // NiuBanner
             // 
@@ -393,11 +394,6 @@ namespace WindowsFormsApp1
             this.ResumeLayout(false);
             this.PerformLayout();
 
-            int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
-            int w = Screen.PrimaryScreen.WorkingArea.Width / 2;
-            this.Size = new Size(w, h);
-
-            this.CenterToScreen();
         }
 
         #endregion
