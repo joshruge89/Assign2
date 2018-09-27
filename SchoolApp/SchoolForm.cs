@@ -27,7 +27,7 @@ namespace SchoolApp
         private void PopulateStudentBox()
         {
             FormController.BuildStudentPool();
-            foreach (Student s in FormController.studentPool)
+            foreach (Student s in FormModel.studentPool)
             {
                 StudentBox.Items.Add(s.BuildStudentListing());
             }
@@ -36,7 +36,7 @@ namespace SchoolApp
         private void PopulateCourseBox()
         {
             FormController.BuildCoursePool();
-            foreach (Course c in FormController.coursePool)
+            foreach (Course c in FormModel.coursePool)
             {         
                 CourseBox.Items.Add(c.BuildCourseListing());
             }

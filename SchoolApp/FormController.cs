@@ -7,21 +7,7 @@ namespace SchoolApp
 {
     static class FormController
     {
-        public static SortedSet<Student> studentPool = new SortedSet<Student>();
-        public static SortedSet<Course> coursePool = new SortedSet<Course>();
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SchoolForm());
-        }
-
-
-        /*******************************************************
+         /*******************************************************
          * FormController.BuildStudentPool method
          *
          * Arguments: None
@@ -64,7 +50,7 @@ namespace SchoolApp
                     Student newStudent = new Student(newZid, argList[2], argList[1], argList[3], newYear, newGpa);
 
                     // Add the new student to the student pool
-                    studentPool.Add(newStudent);
+                    FormModel.studentPool.Add(newStudent);
 
                     // Read next line of input
                     buffer = inFile.ReadLine();
@@ -116,7 +102,7 @@ namespace SchoolApp
                     Course newCourse = new Course(argList[0], crsNum, argList[2], crdHours, newCapp);
 
                     // Add the new course to the course pool
-                    coursePool.Add(newCourse);
+                    FormModel.coursePool.Add(newCourse);
 
                     // Read next line of input
                     buffer = inFile.ReadLine();
