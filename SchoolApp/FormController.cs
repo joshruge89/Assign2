@@ -111,6 +111,72 @@ namespace SchoolApp
 
         } // end BuildCoursePool method
 
+
+        /*******************************************************
+        * FormController.MatchStudent method
+        *
+        * Arguments: string targetStudent - the student to be matched
+        * Return Type: Student - the matched student
+        * ******************************************************/
+        public static Student MatchStudent(string targetStudent)
+        {
+            foreach (Student s in FormModel.studentPool)
+            {
+                if (s.BuildStudentListing() == targetStudent)
+                {
+                    return s;
+                }
+            }
+
+            return new Student();
+        }
+
+        /*******************************************************
+        * FormController.MatchCourse method
+        *
+        * Arguments: string targetCourse - the course to be matched
+        * Return Type: Course - the matched course
+        * ******************************************************/
+        public static Course MatchCourse(string targetCourse)
+        {
+            string query, index;
+
+            query = targetCourse.Substring(0, 13);
+            foreach (Course c in FormModel.coursePool)
+            {
+                index = c.BuildCourseListing().Substring(0, 13);
+                if (query == index)
+                {
+                    return c;
+                }
+            }
+
+            return new Course();
+        }
+
+        public static string BuildEnrollErrorMsg(int cc)
+        {
+            if (cc == 5)
+            {
+                return "Error! This class is already at max capacity.";
+            }
+
+            if (cc == 15)
+            {
+                return "Error! Student would be over the maximum number of credits allowed.";
+            }
+
+            if (cc == 10)
+            {
+                return "Error! Student is already enrolled in the course";
+            }
+
+            return "Unkown error occurred";
+        }
+
+
+
+
         /*******************************************************
         * FormController.EnrollStudent method
         *
@@ -119,7 +185,7 @@ namespace SchoolApp
         * Use Case: takes user input and searches for class then
         *           adds student to class enrolled list.
         ******************************************************/
-       public static void EnrollStudent()
+        public static void EnrollStudent()
        {
             Console.WriteLine("EnrollStudent called.");
        } // end FormController.EnrollStudent method
