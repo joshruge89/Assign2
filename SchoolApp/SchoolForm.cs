@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace SchoolApp
 {
     public partial class Form1 : Form
     {
