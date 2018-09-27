@@ -7,21 +7,7 @@ namespace SchoolApp
 {
     static class FormController
     {
-        public static SortedSet<Student> studentPool = new SortedSet<Student>();
-        public static SortedSet<Course> coursePool = new SortedSet<Course>();
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SchoolForm());
-        }
-
-
-        /*******************************************************
+         /*******************************************************
          * FormController.BuildStudentPool method
          *
          * Arguments: None
@@ -64,7 +50,7 @@ namespace SchoolApp
                     Student newStudent = new Student(newZid, argList[2], argList[1], argList[3], newYear, newGpa);
 
                     // Add the new student to the student pool
-                    studentPool.Add(newStudent);
+                    FormModel.studentPool.Add(newStudent);
 
                     // Read next line of input
                     buffer = inFile.ReadLine();
@@ -116,7 +102,7 @@ namespace SchoolApp
                     Course newCourse = new Course(argList[0], crsNum, argList[2], crdHours, newCapp);
 
                     // Add the new course to the course pool
-                    coursePool.Add(newCourse);
+                    FormModel.coursePool.Add(newCourse);
 
                     // Read next line of input
                     buffer = inFile.ReadLine();
@@ -124,6 +110,72 @@ namespace SchoolApp
             } // end using
 
         } // end BuildCoursePool method
+
+
+        /*******************************************************
+        * FormController.MatchStudent method
+        *
+        * Arguments: string targetStudent - the student to be matched
+        * Return Type: Student - the matched student
+        * ******************************************************/
+        public static Student MatchStudent(string targetStudent)
+        {
+            foreach (Student s in FormModel.studentPool)
+            {
+                if (s.BuildStudentListing() == targetStudent)
+                {
+                    return s;
+                }
+            }
+
+            return new Student();
+        }
+
+        /*******************************************************
+        * FormController.MatchCourse method
+        *
+        * Arguments: string targetCourse - the course to be matched
+        * Return Type: Course - the matched course
+        * ******************************************************/
+        public static Course MatchCourse(string targetCourse)
+        {
+            string query, index;
+
+            query = targetCourse.Substring(0, 13);
+            foreach (Course c in FormModel.coursePool)
+            {
+                index = c.BuildCourseListing().Substring(0, 13);
+                if (query == index)
+                {
+                    return c;
+                }
+            }
+
+            return new Course();
+        }
+
+        public static string BuildEnrollErrorMsg(int cc)
+        {
+            if (cc == 5)
+            {
+                return "Error! This class is already at max capacity.";
+            }
+
+            if (cc == 15)
+            {
+                return "Error! Student would be over the maximum number of credits allowed.";
+            }
+
+            if (cc == 10)
+            {
+                return "Error! Student is already enrolled in the course";
+            }
+
+            return "Unkown error occurred";
+        }
+
+
+
 
         /*******************************************************
         * FormController.EnrollStudent method
@@ -133,7 +185,7 @@ namespace SchoolApp
         * Use Case: takes user input and searches for class then
         *           adds student to class enrolled list.
         ******************************************************/
-       public static void EnrollStudent()
+        public static void EnrollStudent()
        {
             Console.WriteLine("EnrollStudent called.");
        } // end FormController.EnrollStudent method

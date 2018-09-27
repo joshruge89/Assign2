@@ -186,7 +186,9 @@ namespace SchoolApp
 
             // Add student to the course if conditions were met
             targetCourse.studentsEnrolled.Add(Zid);
-            Console.WriteLine("Successfully Enrolled Student!\n");
+            targetCourse.NumEnrolled++;
+            Console.WriteLine("Student Successfully Added!");
+
             return 0;
         } // end Student.Enroll method
 
@@ -205,6 +207,7 @@ namespace SchoolApp
                 if (Zid == iZid)
                 {
                     targetCourse.studentsEnrolled.Remove(iZid);
+                    targetCourse.NumEnrolled--;
                     Console.WriteLine("Successfully Dropped Student!\n");
 
                     return 0;

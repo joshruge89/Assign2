@@ -36,7 +36,9 @@ namespace SchoolApp
         //constructor with no parameters
         public Course()
         {
-            // Do nothing
+            DeptCode = "xxxx";
+            courseNum = 999;
+            sectionNum = "xxx";
         }
 
         //constructor with 5 paramters, Department code, course num, sect num, course hours, max capacity
