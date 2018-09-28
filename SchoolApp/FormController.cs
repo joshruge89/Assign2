@@ -124,6 +124,13 @@ namespace SchoolApp
         } // end BuildCoursePool method
 
 
+        /*******************************************************
+        * FormController.BuildMajorPool method
+        *
+        * Arguments: None
+        * Return Type: void
+        * Use Case: Builds the static majorPool variable
+        ******************************************************/
         public static void BuildMajorPool()
         {
             foreach (Student s in FormModel.studentPool)
@@ -132,6 +139,13 @@ namespace SchoolApp
             }
         }
 
+        /*******************************************************
+        * FormController.BuildDeptPool method
+        *
+        * Arguments: None
+        * Return Type: void
+        * Use Case: Builds the static deptPool variable
+        ******************************************************/
         public static void BuildDeptPool()
         {
             foreach (Course c in FormModel.coursePool)
@@ -183,6 +197,14 @@ namespace SchoolApp
             return new Course();
         }
 
+
+        /*******************************************************
+        * FormController.BuildEnrollErrorMsg method
+        *
+        * Arguments: int cc - condition code based on the status of enrollment
+        * Return Type: string
+        * Use Case: Builds enroll button output if error has occurred
+        ******************************************************/
         public static string BuildEnrollErrorMsg(int cc)
         {
             if (cc == 5)
@@ -201,7 +223,7 @@ namespace SchoolApp
             }
 
             return "Unkown error occurred";
-        }
+        } // end FormController.BuildEnrollErrorMsg method
 
   
         /*******************************************************
