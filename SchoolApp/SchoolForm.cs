@@ -37,6 +37,7 @@ namespace SchoolApp
             PopulateDeptComboBox();
         }
 
+        // Center and Size Frame
         private void PositionAndSizeFrame()
         {
             int h = Screen.PrimaryScreen.WorkingArea.Height - 200;
@@ -46,14 +47,8 @@ namespace SchoolApp
             CenterToScreen();
         }
 
-        /*******************************************************
-        * Populate dropbox methods
-        *
-        * Arguments: None
-        * Return Type: void
-        * Use Case: Clears Student box or course box and 
-        * then use a loop to add items for selection by user
-        ******************************************************/
+
+        // Default PopulateStudentBox method
         private void PopulateStudentBox()
         {
             StudentBox.Items.Clear();
@@ -63,6 +58,7 @@ namespace SchoolApp
             }
         }
 
+        // Overloaded PopulateStudentBox method
         private void PopulateStudentBox(SortedSet<Student> searchResults)
         {
             StudentBox.Items.Clear();
@@ -72,6 +68,7 @@ namespace SchoolApp
             }
         }
 
+        // Default PopulateCourseBox method
         private void PopulateCourseBox()
         {
             CourseBox.Items.Clear();
@@ -81,6 +78,7 @@ namespace SchoolApp
             }
         }
 
+        // Overloaded PopulateStudentBox method
         private void PopulateCourseBox(SortedSet<Course> searchResults)
         {
             CourseBox.Items.Clear();
@@ -90,7 +88,7 @@ namespace SchoolApp
             }
         }
 
-
+        // Add items to Major box
         private void PopulateMajorComboBox()
         {
             MajorComboBox.Items.Clear();
@@ -102,6 +100,7 @@ namespace SchoolApp
             }
         }
 
+        // Add items to Year box
         private void PopulateYearComboBox()
         {
             YearComboBox.Items.Clear();
@@ -113,6 +112,7 @@ namespace SchoolApp
             }
         }
 
+        // Add items to Dept box
         private void PopulateDeptComboBox()
         {
             DeptComboBox.Items.Clear();
@@ -161,9 +161,9 @@ namespace SchoolApp
            
            
             MainOutputBox.Text = rosterOutput.ToString();
-        }
+        } // end SchoolForm.PrintRosterButton_Click method
 
-        //Not used?
+        // Print Student Details on Click
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -237,7 +237,7 @@ namespace SchoolApp
            
 
             MainOutputBox.Text = enrollOutput.ToString();
-        }
+        } // end SchoolForm.EnrollStudentButton_Click method
 
         /*******************************************************
         * DropStudent Button method
@@ -294,8 +294,8 @@ namespace SchoolApp
             }
 
             MainOutputBox.Text = dropOutput.ToString();
-           
-        }
+
+        } // end DropStudentButton_Click method
 
         /*******************************************************
         * AddStudent Button method
@@ -432,7 +432,7 @@ namespace SchoolApp
 
             MainOutputBox.Text = addCourseOutput.ToString();
 
-        }
+        } // end SchoolForm.AddCourseButton_Click method
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
@@ -455,6 +455,6 @@ namespace SchoolApp
                 PopulateCourseBox(FormModel.filteredCoursePool);
             }
 
-        }
-    }
-}
+        } // end SearchButton_Click.method
+    } // end SchoolForm class
+} // end SchoolApp namespace

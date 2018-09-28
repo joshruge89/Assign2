@@ -11,10 +11,7 @@
  *              functionality to the user via a form..      *
  ***********************************************************/
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
 
 namespace SchoolApp
 {
@@ -270,19 +267,5 @@ namespace SchoolApp
             }
         } // end FormController.FilterStudentPool method
 
-
-
-        /*******************************************************
-         * FormController.PrintRosterForCourse method
-         *
-         * Arguments: None
-         * Return Type: void
-         * Use Case: takes user input and prints student roster
-         *           for course specified
-         ******************************************************/
-        public static void PrintRosterForCourse()
-        {
-            Console.WriteLine("PrintRosterForCourse called");
-        } // end FormController.PrintRosterForCourse method
     } // end FormController class
 } // end namespace
