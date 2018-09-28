@@ -104,11 +104,12 @@ namespace SchoolApp
             StringBuilder pRos = new StringBuilder();
             List<string> listFoo = new List<string>();
             // foo;
+
             bool selected = true;
 
             if (CourseBox.SelectedIndex == -1)
             {
-                pRos.AppendLine("Error! Please Select a Course");
+                rosterOutput.AppendLine("Error! Please Select a Course");
                 selected = false;
             }
 
