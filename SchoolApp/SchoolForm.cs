@@ -27,11 +27,13 @@ namespace SchoolApp
             FormController.BuildStudentPool();
             FormController.BuildCoursePool();
             FormController.BuildMajorPool();
+            FormController.BuildDeptPool();
 
             PopulateStudentBox();
             PopulateCourseBox();
             PopulateMajorComboBox();
             PopulateYearComboBox();
+            PopulateDeptComboBox();
         }
 
         private void PositionAndSizeFrame()
@@ -80,6 +82,17 @@ namespace SchoolApp
             foreach (string year in FormModel.yearPool)
             {
                 YearComboBox.Items.Add(year);
+            }
+        }
+
+        private void PopulateDeptComboBox()
+        {
+            DeptComboBox.Items.Clear();
+            DeptComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (string dept in FormModel.deptPool)
+            {
+                DeptComboBox.Items.Add(dept);
             }
         }
 
