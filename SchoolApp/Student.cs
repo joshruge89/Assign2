@@ -219,7 +219,13 @@ namespace SchoolApp
             return 20;
         } // end Student.Drop method
 
-
+          /*******************************************************
+          * Student.PrintEnrolled method
+          * 
+          * Arguments: None
+          * Return Type: string - list of enrolled courses
+          * Use Case: Creates a list of the student's courses
+          ******************************************************/
         public string PrintEnrolled()
         {
             StringBuilder enrolledList = new StringBuilder();

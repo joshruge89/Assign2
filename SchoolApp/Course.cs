@@ -17,11 +17,11 @@ using System.Text;
 namespace SchoolApp
 {
     /*******************************************************
-* Course Class with Icomparable implementation
-* 
-* Use Case: Encapsulates Course object including
-* methods and variables
-******************************************************/
+    * Course Class with Icomparable implementation
+    * 
+    * Use Case: Encapsulates Course object including
+    * methods and variables
+    ******************************************************/
     public class Course : IComparable<Course>
     {
         //Private variables for course class
