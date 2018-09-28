@@ -55,6 +55,15 @@ namespace SchoolApp
             }
         }
 
+        private void PopulateStudentBox(SortedSet<Student> searchResults)
+        {
+            StudentBox.Items.Clear();
+            foreach (Student s in searchResults)
+            {
+                StudentBox.Items.Add(s.BuildStudentListing());
+            }
+        }
+
         private void PopulateCourseBox()
         {
             CourseBox.Items.Clear();
@@ -63,6 +72,16 @@ namespace SchoolApp
                 CourseBox.Items.Add(c.BuildCourseListing());
             }
         }
+
+        private void PopulateCourseBox(SortedSet<Course> searchResults)
+        {
+            CourseBox.Items.Clear();
+            foreach (Course c in searchResults)
+            {
+                CourseBox.Items.Add(c.BuildCourseListing());
+            }
+        }
+
 
         private void PopulateMajorComboBox()
         {
@@ -361,6 +380,27 @@ namespace SchoolApp
 
         }
 
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+ 
+            if (String.IsNullOrEmpty(SearchStudentBox.Text))
+            {
+                PopulateStudentBox();
+            } else
+            {
+                FormController.FilterStudentPool(SearchStudentBox.Text);
+                PopulateStudentBox(FormModel.filteredStudentPool);
+            }
 
+            if (String.IsNullOrEmpty(SearchCourseBox.Text))
+            {
+                PopulateCourseBox();
+            } else
+            {
+                FormController.FilterCoursePool(SearchCourseBox.Text.ToUpper());
+                PopulateCourseBox(FormModel.filteredCoursePool);
+            }
+
+        }
     }
 }
