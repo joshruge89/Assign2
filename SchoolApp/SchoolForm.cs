@@ -233,35 +233,61 @@ namespace SchoolApp
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            bool isNameEmpty, isZidEmpty, isMajorEmpty, isYearEmpty;
+            bool isNameValid = true,
+                isZidEmpty = true,
+                isMajorEmpty = true,
+                isYearEmpty = true;
+
+            StringBuilder addOutput = new StringBuilder();
+            string[] names = NameBox.Text.Split(',');
 
             if (String.IsNullOrEmpty(NameBox.Text))
             {
-                isNameEmpty = false;
-            }
+                isNameValid = false;
+                addOutput.AppendLine("Error! Please enter a name to add a student");
+            } else if (!NameBox.Text.Contains(", "))
+            {
+                addOutput.AppendLine("Error! Please enter a valid name to add a student -- Valid format: lname, fname");
+                isNameValid = false;
+            } 
 
             if (String.IsNullOrEmpty(ZidBox.Text))
             {
                 isZidEmpty = false;
+                addOutput.AppendLine("Error! Please enter a Zid to add a student");
             }
 
             if (String.IsNullOrEmpty(MajorComboBox.Text))
             {
                 isMajorEmpty = false;
+                addOutput.AppendLine("Error! Please select a major to add a student");
             }
 
             if (String.IsNullOrEmpty(YearComboBox.Text))
             {
                 isYearEmpty = false;
+                addOutput.AppendLine("Error! Please select a year to add a student");
             }
 
+            if (isNameValid == true && isZidEmpty == true && isMajorEmpty == true && isYearEmpty == true)
+            {
 
+                // Parse zid from string to uint
+                uint newZid;
+                UInt32.TryParse(ZidBox.Text, out newZid);
 
-            Student newStudent = new Student();
-            FormModel.studentPool.Add(newStudent);
-            PopulateStudentBox();
-            MainOutputBox.Text = "Added Student";
-        }
+                Student newStudent = new Student(newZid, names[1].Trim(), names[0], MajorComboBox.Text, YearComboBox.SelectedIndex, 0);
+                FormModel.studentPool.Add(newStudent);
+                PopulateStudentBox();
+
+                addOutput.AppendLine(String.Format("Successfully added {0} {1} to the database!", names[1].Trim(), names[0]));
+            } else
+            {
+                addOutput.AppendLine("Unable to add the student. Please try again.");
+            }
+
+            MainOutputBox.Text = addOutput.ToString();
+        } // end SchoolForm.AddStudentButton_Click method
 
         private void AddCourseButton_Click(object sender, EventArgs e)
         {
