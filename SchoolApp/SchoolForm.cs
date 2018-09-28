@@ -100,27 +100,23 @@ namespace SchoolApp
         private void PrintRosterButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            StringBuilder pRos = new StringBuilder();
+            StringBuilder rosterOutput = new StringBuilder();
             bool selected = true;
 
             if (CourseBox.SelectedIndex == -1)
             {
-                pRos.AppendLine("Error! Please Select a Course");
+                rosterOutput.AppendLine("Error! Please Select a Course");
                 selected = false;
             }
 
             if (selected == true)
             {
                 Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
-           //     string call = selectedCourse.studentsEnrolled(); 
-                pRos.AppendLine(selectedCourse.ToString()); 
+                rosterOutput.AppendLine(selectedCourse.ToString()); 
             }
 
-            /*           string[] foo = { "Matched Course Roster Here", "This should display on the next line",
-                                       "So we can be sure the list will display properly"};
-                       MainOutputBox.Text = String.Join(Environment.NewLine, foo);
-           */
-            MainOutputBox.Text = pRos.ToString();
+
+            MainOutputBox.Text = rosterOutput.ToString();
         }
 
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
