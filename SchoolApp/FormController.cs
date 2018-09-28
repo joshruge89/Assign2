@@ -124,6 +124,15 @@ namespace SchoolApp
         } // end BuildCoursePool method
 
 
+        public static void BuildMajorPool()
+        {
+            foreach (Student s in FormModel.studentPool)
+            {
+                FormModel.majorPool.Add(s.Major);
+            }
+        }
+
+
         /*******************************************************
         * FormController.MatchStudent method
         *

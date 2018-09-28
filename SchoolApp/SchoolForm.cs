@@ -26,9 +26,11 @@ namespace SchoolApp
 
             FormController.BuildStudentPool();
             FormController.BuildCoursePool();
+            FormController.BuildMajorPool();
 
             PopulateStudentBox();
             PopulateCourseBox();
+            PopulateMajorComboBox();
         }
 
         private void PositionAndSizeFrame()
@@ -55,6 +57,15 @@ namespace SchoolApp
             foreach (Course c in FormModel.coursePool)
             {         
                 CourseBox.Items.Add(c.BuildCourseListing());
+            }
+        }
+
+        private void PopulateMajorComboBox()
+        {
+            MajorComboBox.Items.Clear();
+            foreach (string major in FormModel.majorPool)
+            {
+                MajorComboBox.Items.Add(major);
             }
         }
 
@@ -198,7 +209,28 @@ namespace SchoolApp
         //Add Student 
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
+            MainOutputBox.Clear();
+            bool isNameEmpty, isZidEmpty, isMajorEmpty, isYearEmpty;
 
+            if (String.IsNullOrEmpty(NameBox.Text))
+            {
+                isNameEmpty = false;
+            }
+
+            if (String.IsNullOrEmpty(ZidBox.Text))
+            {
+                isZidEmpty = false;
+            }
+
+            if (String.IsNullOrEmpty(MajorComboBox.Text))
+            {
+                isMajorEmpty = false;
+            }
+
+            if (String.IsNullOrEmpty(YearComboBox.Text))
+            {
+                isYearEmpty = false;
+            }
 
 
 
@@ -216,5 +248,7 @@ namespace SchoolApp
             MainOutputBox.Text = "Added Course";
 
         }
+
+
     }
 }
