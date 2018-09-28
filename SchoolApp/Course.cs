@@ -78,15 +78,10 @@ namespace SchoolApp
         * Use Case: Used on option 5 to print a roster of all
         * students enrolled in this class.
         ******************************************************/
-        public void PrintRoster(SortedSet<Student> studentPool)
+        public List<string> PrintRoster(SortedSet<Student> studentPool)
         {
-            //Header
+            List<string> foo = new List<string>(); 
             StringBuilder sb = new StringBuilder();
-            sb.Append("\n" + "Course:  ");
-            sb.Append(deptCode + "  " + courseNum + "-" + sectionNum);
-            sb.Append("(" + numEnrolled + "/" + maxCapacity + ") \n");
-            sb.Append("--------------------------------------------------------");
-            Console.WriteLine(sb);
             //finding students
             bool matchFound = false;
 
@@ -96,13 +91,15 @@ namespace SchoolApp
                 {
                     if (s.Zid == iZid)
                     {
-                        Console.WriteLine(s.ToString());
+                        foo.Add(s.ToString());
                         matchFound = true;
                     }
                 }
+                return foo;
             }
             if (matchFound == false)
-                Console.WriteLine("There isn't anyone enrolled in " + deptCode + " " + courseNum + "-" + sectionNum);
+                foo.Add("There isn't anyone enrolled in " + deptCode + " " + courseNum + "-" + sectionNum);
+            return foo;
         }
         /*******************************************************
         * Course.ToString method
