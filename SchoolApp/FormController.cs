@@ -132,6 +132,14 @@ namespace SchoolApp
             }
         }
 
+        public static void BuildDeptPool()
+        {
+            foreach (Course c in FormModel.coursePool)
+            {
+                FormModel.deptPool.Add(c.DeptCode);
+            }
+        }
+
 
         /*******************************************************
         * FormController.MatchStudent method
