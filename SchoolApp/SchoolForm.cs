@@ -46,6 +46,14 @@ namespace SchoolApp
             CenterToScreen();
         }
 
+        /*******************************************************
+        * Populate dropbox methods
+        *
+        * Arguments: None
+        * Return Type: void
+        * Use Case: Clears Student box or course box and 
+        * then use a loop to add items for selection by user
+        ******************************************************/
         private void PopulateStudentBox()
         {
             StudentBox.Items.Clear();
@@ -116,7 +124,14 @@ namespace SchoolApp
             }
         }
 
-        //Print Roster Button 
+        /*******************************************************
+        * Print Roster Click method
+        *
+        * Arguments: Object and event arguments
+        * Return Type: void
+        * Use Case: Check if course is selected then
+        * call print roster on the selected course. 
+        ******************************************************/
         private void PrintRosterButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -148,6 +163,7 @@ namespace SchoolApp
             MainOutputBox.Text = rosterOutput.ToString();
         }
 
+        //Not used?
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -166,7 +182,15 @@ namespace SchoolApp
         }
 
 
-        //Enroll Students
+        /*******************************************************
+        * EnrollStudent Button method
+        *
+        * Arguments: None
+        * Return Type: object, eventargs
+        * Use Case: check if student and course are
+        * selected, if both are add student object to
+        * course listing and update course printout.
+        ******************************************************/
         private void EnrollStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -215,7 +239,15 @@ namespace SchoolApp
             MainOutputBox.Text = enrollOutput.ToString();
         }
 
-        //Drop Student Function 
+        /*******************************************************
+        * DropStudent Button method
+        *
+        * Arguments: None
+        * Return Type: object, eventargs
+        * Use Case: check if student and course are
+        * selected, if both are drop student object to
+        * course listing and update course printout.
+        ******************************************************/
         private void DropStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -265,7 +297,14 @@ namespace SchoolApp
            
         }
 
-        //Add Student 
+        /*******************************************************
+        * AddStudent Button method
+        *
+        * Arguments: None
+        * Return Type: object, eventargs
+        * Use Case: check for all fields to be filled in
+        * then create new student object using constructor. 
+        ******************************************************/
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
@@ -323,8 +362,16 @@ namespace SchoolApp
             }
 
             MainOutputBox.Text = addStudentOutput.ToString();
-        } // end SchoolForm.AddStudentButton_Click method
+} // end SchoolForm.AddStudentButton_Click method
 
+        /*******************************************************
+        * AddCourse Button method
+        *
+        * Arguments: None
+        * Return Type: object, eventargs
+        * Use Case: check for all fields to be filled in
+        * then create new course object using constructor. 
+        ******************************************************/
         private void AddCourseButton_Click(object sender, EventArgs e)
         {
 
