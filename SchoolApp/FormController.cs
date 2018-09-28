@@ -13,6 +13,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace SchoolApp
@@ -225,24 +226,50 @@ namespace SchoolApp
             return "Unkown error occurred";
         } // end FormController.BuildEnrollErrorMsg method
 
-  
+
         /*******************************************************
-        * FormController.EnrollStudent method
+        * FormController.FilterStudentPool method
         *
         * Arguments: None
         * Return Type: void
-        * Use Case: takes user input and searches for class then
-        *           adds student to class enrolled list.
+        * Use Case: searches for student then
+        *           adds student to filtered student pool
         ******************************************************/
-        public static void EnrollStudent()
-       {
-            Console.WriteLine("EnrollStudent called.");
-       } // end FormController.EnrollStudent method
+        public static void FilterStudentPool(string filter)
+        {
+            FormModel.filteredStudentPool.Clear();
 
-       public static void DropStudent()
-       {
-            Console.WriteLine("DropStudent Called");
-       } // end FormController.DropStudent method
+            foreach (Student s in FormModel.studentPool)
+            {
+                if (s.Zid.ToString().Contains(filter))
+                {
+                    FormModel.filteredStudentPool.Add(s);
+                }
+            }
+        } // end FormController.FilterStudentPool method
+
+
+        /*******************************************************
+        * FormController.FilterCoursePool method
+        *
+        * Arguments: None
+        * Return Type: void
+        * Use Case: searches for student then
+        *           adds student to filtered student pool
+        ******************************************************/ 
+        public static void FilterCoursePool(string filter)
+        {
+            FormModel.filteredCoursePool.Clear();
+
+            foreach (Course c in FormModel.coursePool)
+            {
+                if (c.DeptCode.Contains(filter))
+                {
+                    FormModel.filteredCoursePool.Add(c);
+                }
+            }
+        } // end FormController.FilterStudentPool method
+
 
 
         /*******************************************************

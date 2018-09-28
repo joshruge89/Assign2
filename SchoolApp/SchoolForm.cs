@@ -63,6 +63,15 @@ namespace SchoolApp
             }
         }
 
+        private void PopulateStudentBox(SortedSet<Student> searchResults)
+        {
+            StudentBox.Items.Clear();
+            foreach (Student s in searchResults)
+            {
+                StudentBox.Items.Add(s.BuildStudentListing());
+            }
+        }
+
         private void PopulateCourseBox()
         {
             CourseBox.Items.Clear();
@@ -71,6 +80,16 @@ namespace SchoolApp
                 CourseBox.Items.Add(c.BuildCourseListing());
             }
         }
+
+        private void PopulateCourseBox(SortedSet<Course> searchResults)
+        {
+            CourseBox.Items.Clear();
+            foreach (Course c in searchResults)
+            {
+                CourseBox.Items.Add(c.BuildCourseListing());
+            }
+        }
+
 
         private void PopulateMajorComboBox()
         {
@@ -147,13 +166,21 @@ namespace SchoolApp
         //Not used?
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            MainOutputBox.Clear();
 
+            if (StudentBox.SelectedIndex != -1)
+            {
+                StringBuilder sb = new StringBuilder();
+                Student selectedStudent = FormController.MatchStudent(StudentBox.SelectedItem.ToString());
+
+                sb.AppendLine(selectedStudent.ToString());
+                sb.AppendLine("-------------------------------------------------------------------------------------------------------------------");
+                sb.AppendLine(selectedStudent.PrintEnrolled());
+
+                MainOutputBox.Text = sb.ToString();
+            }
         }
 
-        private void CourseBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         /*******************************************************
         * EnrollStudent Button method
@@ -224,7 +251,6 @@ namespace SchoolApp
         private void DropStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            string studentSelection, courseSelection;
             StringBuilder dropOutput = new StringBuilder();
             bool bothSelected = true;
 
@@ -408,6 +434,27 @@ namespace SchoolApp
 
         }
 
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+ 
+            if (String.IsNullOrEmpty(SearchStudentBox.Text))
+            {
+                PopulateStudentBox();
+            } else
+            {
+                FormController.FilterStudentPool(SearchStudentBox.Text);
+                PopulateStudentBox(FormModel.filteredStudentPool);
+            }
 
+            if (String.IsNullOrEmpty(SearchCourseBox.Text))
+            {
+                PopulateCourseBox();
+            } else
+            {
+                FormController.FilterCoursePool(SearchCourseBox.Text.ToUpper());
+                PopulateCourseBox(FormModel.filteredCoursePool);
+            }
+
+        }
     }
 }

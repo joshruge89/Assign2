@@ -18,9 +18,14 @@ namespace SchoolApp
     class FormModel
     {
         public static SortedSet<Student> studentPool = new SortedSet<Student>();
+        public static SortedSet<Student> filteredStudentPool = new SortedSet<Student>();
+
         public static SortedSet<Course> coursePool = new SortedSet<Course>();
+        public static SortedSet<Course> filteredCoursePool = new SortedSet<Course>();
+
         public static SortedSet<string> majorPool = new SortedSet<string>();
         public static SortedSet<string> deptPool = new SortedSet<string>();
+
 
         public static string[] yearPool = { "Freshman", "Sophomore", "Junior", "Senior", "PostBacc" };
     }

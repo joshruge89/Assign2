@@ -220,6 +220,34 @@ namespace SchoolApp
         } // end Student.Drop method
 
 
+        public string PrintEnrolled()
+        {
+            StringBuilder enrolledList = new StringBuilder();
+
+            bool matchFound = false;
+
+            foreach (Course c in FormModel.coursePool)
+            {
+                foreach (uint iZid in c.studentsEnrolled)
+                {
+                    if (Zid == iZid)
+                    {
+                        enrolledList.AppendLine(c.ToString());
+                        matchFound = true;
+                    }
+                } // end inner foreach
+            } // end outer foreach
+
+            if (matchFound == false)
+            {
+                enrolledList.AppendLine(FirstName + " " + LastName + " is not enrolled in any classes yet.");
+            }
+
+            return enrolledList.ToString();
+        }
+
+
+
         /*******************************************************
         * Course.ToString method
         * 
