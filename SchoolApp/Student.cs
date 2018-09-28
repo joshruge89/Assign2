@@ -186,7 +186,7 @@ namespace SchoolApp
             // Add student to the course if conditions were met
             targetCourse.studentsEnrolled.Add(Zid);
             targetCourse.NumEnrolled++;
-            Hours += 3;
+            Hours += targetCourse.CredHours;
             Console.WriteLine("Student Successfully Added!");
 
             return 0;
@@ -208,7 +208,7 @@ namespace SchoolApp
                 {
                     targetCourse.studentsEnrolled.Remove(iZid);
                     targetCourse.NumEnrolled--;
-                    Hours -= 3;
+                    Hours -= targetCourse.CredHours;
                     Console.WriteLine("Successfully Dropped Student!\n");
 
                     return 0;
