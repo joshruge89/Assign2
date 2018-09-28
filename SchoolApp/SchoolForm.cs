@@ -31,6 +31,7 @@ namespace SchoolApp
             PopulateStudentBox();
             PopulateCourseBox();
             PopulateMajorComboBox();
+            PopulateYearComboBox();
         }
 
         private void PositionAndSizeFrame()
@@ -63,9 +64,22 @@ namespace SchoolApp
         private void PopulateMajorComboBox()
         {
             MajorComboBox.Items.Clear();
+            MajorComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
             foreach (string major in FormModel.majorPool)
             {
                 MajorComboBox.Items.Add(major);
+            }
+        }
+
+        private void PopulateYearComboBox()
+        {
+            YearComboBox.Items.Clear();
+            YearComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (string year in FormModel.yearPool)
+            {
+                YearComboBox.Items.Add(year);
             }
         }
 
