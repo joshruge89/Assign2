@@ -150,13 +150,21 @@ namespace SchoolApp
 
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            MainOutputBox.Clear();
 
+            if (StudentBox.SelectedIndex != -1)
+            {
+                StringBuilder sb = new StringBuilder();
+                Student selectedStudent = FormController.MatchStudent(StudentBox.SelectedItem.ToString());
+
+                sb.AppendLine(selectedStudent.ToString());
+                sb.AppendLine("-------------------------------------------------------------------------------------------------------------------");
+                sb.AppendLine(selectedStudent.PrintEnrolled());
+
+                MainOutputBox.Text = sb.ToString();
+            }
         }
 
-        private void CourseBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         //Enroll Students
         private void EnrollStudentButton_Click(object sender, EventArgs e)
@@ -211,7 +219,6 @@ namespace SchoolApp
         private void DropStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            string studentSelection, courseSelection;
             StringBuilder dropOutput = new StringBuilder();
             bool bothSelected = true;
 

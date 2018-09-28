@@ -222,7 +222,6 @@ namespace SchoolApp
             this.CourseBox.Name = "CourseBox";
             this.CourseBox.Size = new System.Drawing.Size(447, 816);
             this.CourseBox.TabIndex = 16;
-            this.CourseBox.SelectedIndexChanged += new System.EventHandler(this.CourseBox_SelectedIndexChanged);
             // 
             // StudentBox
             // 
