@@ -20,5 +20,7 @@ namespace SchoolApp
         public static SortedSet<Student> studentPool = new SortedSet<Student>();
         public static SortedSet<Course> coursePool = new SortedSet<Course>();
         public static SortedSet<string> majorPool = new SortedSet<string>();
+
+        public static string[] yearPool = { "Freshman", "Sophomore", "Junior", "Senior", "PostBacc" };
     }
 }
