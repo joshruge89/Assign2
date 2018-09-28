@@ -101,35 +101,32 @@ namespace SchoolApp
         private void PrintRosterButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            StringBuilder pRos = new StringBuilder();
-      //      List<string> listFoo = new List<string>();
-            // foo;
+            StringBuilder rosterOutput = new StringBuilder();
 
             bool selected = true;
 
             if (CourseBox.SelectedIndex == -1)
             {
-                pRos.AppendLine("Error! Please Select a Course");
+                rosterOutput.AppendLine("Error! Please Select a Course");
                 selected = false;
             }
 
             if (selected == true)
             {
                 Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
-                pRos = selectedCourse.PrintRoster(FormModel.studentPool);
-       //         string[] foo = listFoo.ToArray();
-       //         MainOutputBox.Text = String.Join(Environment.NewLine, pRos);
-                  
+                rosterOutput = selectedCourse.PrintRoster(FormModel.studentPool);
+
 
             }
 
-            /*           string[] foo = { "Matched Course Roster Here", "This should display on the next line",
-                                       "So we can be sure the list will display properly"};
-            */
 
             MainOutputBox.SelectionTabs = new int[] { 50, 100, 200, 300, 400 };
             MainOutputBox.AcceptsTab = true; 
-            MainOutputBox.Text = pRos.ToString();
+            MainOutputBox.Text = rosterOutput.ToString();
+
+           
+           
+            MainOutputBox.Text = rosterOutput.ToString();
         }
 
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -246,42 +243,121 @@ namespace SchoolApp
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            bool isNameEmpty, isZidEmpty, isMajorEmpty, isYearEmpty;
+            bool isNameValid = true,
+                isZidValid = true,
+                isMajorValid = true,
+                isYearValid = true;
+
+            StringBuilder addStudentOutput = new StringBuilder();
+            string[] names = NameBox.Text.Split(',');
 
             if (String.IsNullOrEmpty(NameBox.Text))
             {
-                isNameEmpty = false;
-            }
+                isNameValid = false;
+                addStudentOutput.AppendLine("Error! Please enter a name to add a student");
+            } else if (!NameBox.Text.Contains(", "))
+            {
+                addStudentOutput.AppendLine("Error! Please enter a valid name to add a student -- Valid format: lname, fname");
+                isNameValid = false;
+            } 
 
             if (String.IsNullOrEmpty(ZidBox.Text))
             {
-                isZidEmpty = false;
+                addStudentOutput.AppendLine("Error! Please enter a Zid to add a student");
+                isZidValid = false;
             }
 
             if (String.IsNullOrEmpty(MajorComboBox.Text))
             {
-                isMajorEmpty = false;
+                addStudentOutput.AppendLine("Error! Please select a major to add a student");
+                isMajorValid = false;
             }
 
             if (String.IsNullOrEmpty(YearComboBox.Text))
             {
-                isYearEmpty = false;
+                addStudentOutput.AppendLine("Error! Please select a year to add a student");
+                isYearValid = false;
             }
 
+            if (isNameValid == true && isZidValid == true && isMajorValid == true && isYearValid == true)
+            {
 
+                // Parse zid from string to uint
+                uint newZid;
+                UInt32.TryParse(ZidBox.Text, out newZid);
 
-            Student newStudent = new Student();
-            FormModel.studentPool.Add(newStudent);
-            PopulateStudentBox();
-            MainOutputBox.Text = "Added Student";
-        }
+                Student newStudent = new Student(newZid, names[1].Trim(), names[0], MajorComboBox.Text, YearComboBox.SelectedIndex, 0);
+                FormModel.studentPool.Add(newStudent);
+                PopulateStudentBox();
+
+                addStudentOutput.AppendLine(String.Format("Successfully added {0} {1} to the database!", names[1].Trim(), names[0]));
+            } else
+            {
+                addStudentOutput.AppendLine("Unable to add the student. Please try again.");
+            }
+
+            MainOutputBox.Text = addStudentOutput.ToString();
+        } // end SchoolForm.AddStudentButton_Click method
 
         private void AddCourseButton_Click(object sender, EventArgs e)
         {
-            Course newCourse = new Course();
-            FormModel.coursePool.Add(newCourse);
-            PopulateCourseBox();
-            MainOutputBox.Text = "Added Course";
+
+            MainOutputBox.Clear();
+
+            bool isDeptValid = true,
+                    isCourseNumBoxValid = true,
+                    isSectionBoxValid = true,
+                    isMaxCapacityBoxValid = true;
+
+            StringBuilder addCourseOutput = new StringBuilder();
+
+            if (String.IsNullOrEmpty(DeptComboBox.Text))
+            {
+                addCourseOutput.AppendLine("Error! Please select a department code to add a course");
+                isDeptValid = false;
+            }
+
+            if (String.IsNullOrEmpty(CourseNumBox.Text))
+            {
+                addCourseOutput.AppendLine("Error! Please enter a course number to add a course");
+                isCourseNumBoxValid = false;
+            }
+
+            if (String.IsNullOrEmpty(SectionBox.Text))
+            {
+                addCourseOutput.AppendLine("Error! Please enter a section number to add a course");
+                isSectionBoxValid = false;
+            }
+
+            if (String.IsNullOrEmpty(MaxCapacityBox.Text))
+            {
+                addCourseOutput.AppendLine("Error! Please enter max capacity to add a course");
+                isMaxCapacityBoxValid = false;
+            }
+
+            if (isDeptValid == true && isCourseNumBoxValid == true && isSectionBoxValid == true && isMaxCapacityBoxValid == true)
+            {
+
+                // Parse cNum from string to uint
+                uint crsNum;
+                UInt32.TryParse(CourseNumBox.Text, out crsNum);
+
+
+                // Parse newCapp from string to ushort
+                ushort newMax;
+                UInt16.TryParse(MaxCapacityBox.Text, out newMax);
+
+
+                Course newCourse = new Course(DeptComboBox.Text, crsNum, SectionBox.Text, 3, newMax);
+                FormModel.coursePool.Add(newCourse);
+                PopulateCourseBox();
+
+                addCourseOutput.AppendLine("Successfully added " + newCourse.BuildCourseListing() + " to the course pool");
+
+            }
+
+
+            MainOutputBox.Text = addCourseOutput.ToString();
 
         }
 
