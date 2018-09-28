@@ -102,7 +102,6 @@ namespace SchoolApp
         {
             MainOutputBox.Clear();
             StringBuilder rosterOutput = new StringBuilder();
-            List<string> listFoo = new List<string>();
 
             bool selected = true;
 
@@ -115,11 +114,16 @@ namespace SchoolApp
             if (selected == true)
             {
                 Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
-                listFoo = selectedCourse.PrintRoster(FormModel.studentPool);
-                string[] foo = listFoo.ToArray();
-                MainOutputBox.Text = String.Join(Environment.NewLine, foo);
+                rosterOutput = selectedCourse.PrintRoster(FormModel.studentPool);
+
 
             }
+
+
+            MainOutputBox.SelectionTabs = new int[] { 50, 100, 200, 300, 400 };
+            MainOutputBox.AcceptsTab = true; 
+            MainOutputBox.Text = rosterOutput.ToString();
+
            
            
             MainOutputBox.Text = rosterOutput.ToString();
