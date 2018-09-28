@@ -101,9 +101,8 @@ namespace SchoolApp
         private void PrintRosterButton_Click(object sender, EventArgs e)
         {
             MainOutputBox.Clear();
-            StringBuilder pRos = new StringBuilder();
+            StringBuilder rosterOutput = new StringBuilder();
             List<string> listFoo = new List<string>();
-            // foo;
 
             bool selected = true;
 
@@ -121,13 +120,9 @@ namespace SchoolApp
                 MainOutputBox.Text = String.Join(Environment.NewLine, foo);
 
             }
-
-            /*           string[] foo = { "Matched Course Roster Here", "This should display on the next line",
-                                       "So we can be sure the list will display properly"};
-            */
            
            
-            MainOutputBox.Text = pRos.ToString();
+            MainOutputBox.Text = rosterOutput.ToString();
         }
 
         private void StudentBox_SelectedIndexChanged(object sender, EventArgs e)
