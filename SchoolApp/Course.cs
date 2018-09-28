@@ -83,6 +83,8 @@ namespace SchoolApp
             StringBuilder sb = new StringBuilder();
             //finding students
             bool matchFound = false;
+            sb.AppendLine("Course: " + this.ToString());
+            sb.AppendLine("-----------------------------------------------------");
 
             foreach (uint iZid in studentsEnrolled)
             {
