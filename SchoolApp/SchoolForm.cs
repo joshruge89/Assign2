@@ -11,8 +11,9 @@
  *              functionality to the user via a form..      *
  ***********************************************************/
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SchoolApp
@@ -101,6 +102,8 @@ namespace SchoolApp
         {
             MainOutputBox.Clear();
             StringBuilder pRos = new StringBuilder();
+            List<string> listFoo = new List<string>();
+            // foo;
             bool selected = true;
 
             if (CourseBox.SelectedIndex == -1)
@@ -112,14 +115,17 @@ namespace SchoolApp
             if (selected == true)
             {
                 Course selectedCourse = FormController.MatchCourse(CourseBox.SelectedItem.ToString());
-           //     string call = selectedCourse.studentsEnrolled(); 
-                pRos.AppendLine(selectedCourse.ToString()); 
+                listFoo = selectedCourse.PrintRoster(FormModel.studentPool);
+                string[] foo = listFoo.ToArray();
+                MainOutputBox.Text = String.Join(Environment.NewLine, foo);
+
             }
 
             /*           string[] foo = { "Matched Course Roster Here", "This should display on the next line",
                                        "So we can be sure the list will display properly"};
-                       MainOutputBox.Text = String.Join(Environment.NewLine, foo);
-           */
+            */
+           
+           
             MainOutputBox.Text = pRos.ToString();
         }
 
