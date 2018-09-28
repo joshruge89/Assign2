@@ -109,7 +109,7 @@ namespace SchoolApp
 
             if (CourseBox.SelectedIndex == -1)
             {
-                rosterOutput.AppendLine("Error! Please Select a Course");
+                pRos.AppendLine("Error! Please Select a Course");
                 selected = false;
             }
 
